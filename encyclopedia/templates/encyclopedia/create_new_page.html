@@ -1,0 +1,21 @@
+{% extends 'encyclopedia/layout.html' %}
+
+{% block title %} Create a new page {% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <h1 class="mb-5 mt-5">Create a new page</h1>
+    <form class="form col-lg-7" method="post" action="{% url 'wikipage' 'create_new_page' %}">
+        {% csrf_token %}
+        {% if existing_page_error %}
+            <p class="alert alert-danger">{{existing_page_error}}</p>
+        {% endif %}
+        <label for="entry_title">Enter the title:</label>
+        <input class="form-control mb-3" id="entry_title" type="text" name="entry_title" placeholder="Title" required>
+        <label for="entry_content">Enter the page content:</label>
+        <textarea class="form-control mb-3" id="entry_content" cols="30" rows="20" name="entry_content" placeholder="Content" required></textarea>
+
+        <input class="btn btn-primary" type="submit" value="Create Entry">
+    </form>
+</div>
+{% endblock %}

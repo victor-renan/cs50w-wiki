@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %} {{entry_title}} {% endblock %}
+{% block nav %}
+    <div>
+        <a href="{% url 'wikioption' entry_title 'edit_page' %}">Edit</a>
+    </div>
+{% endblock %}
+{% block body %}
+    {% if entry %}
+        <div id="entry">
+            {{entry|safe}}
+        </div>
+    {% else %}
+        <p>Page Not Found</p>
+    {% endif %}
+    </div>
+{% endblock %}

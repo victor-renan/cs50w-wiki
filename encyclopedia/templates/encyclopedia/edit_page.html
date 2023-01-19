@@ -1,0 +1,17 @@
+{% extends 'encyclopedia/layout.html' %}
+
+{% block title %} Edit {{entry_title}} {% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <h1 class="mb-5 mt-5">Edit {{entry_title}}</h1>
+    <form class="form col-lg-7" method="post" action="{% url 'wikioption' entry_title 'edit_page' %}">
+        {% csrf_token %}
+        <label for="entry_title">Title:</label>
+        <input class="form-control mb-3" id="entry_title" type="text" name="entry_title" value="{{entry_title}}" required readonly>
+        <label for="entry_content">Update the page content:</label>
+        <textarea class="form-control mb-3" id="entry_content" rows="20" cols="30" name="entry_content" placeholder="Content" required>{{entry_content}}</textarea>
+        <input class="btn btn-primary" type="submit" value="Save Entry">
+    </form>
+</div>
+{% endblock %}
